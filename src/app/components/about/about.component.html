@@ -1,0 +1,45 @@
+<h2>
+  About
+</h2>
+<!-- # template reference -->
+
+<input #memberName />
+<p #p1></p>
+  
+<button (click)="p1.textContent = memberName.value" >
+  Set Name
+</button>
+
+
+<button (click)="empty()">
+  Empty all members
+</button>
+
+<button (click)="addMember( memberName.value)">
+  Add a member
+</button>
+
+<button (click) = "show = !show">
+ {{  show?"Hide" : "Show" }}
+</button>
+
+<!-- ng 4.0 , else-->
+
+<div [ngClass]="{highlight:isMouseOver}" 
+      *ngIf = "show else notShown" 
+      (mouseenter)="isMouseOver=true"
+      (mouseleave)="isMouseOver=false"
+      >
+  <ul>
+    <li *ngFor="let member of memebers">
+      {{member}}
+    </li>
+  </ul>
+</div>
+
+<!-- # template reference variable-->
+<ng-template #notShown>
+  <p>
+    List is not shown
+  </p>
+</ng-template>
