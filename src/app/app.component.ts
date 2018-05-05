@@ -32,6 +32,11 @@ export class AppComponent implements OnInit {
         console.log("App view is loaded");
     }
 
+    // handler for subscribe 
+    onContact(n: Object) {
+        alert(n);
+    }
+
 }
 
 

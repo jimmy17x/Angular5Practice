@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   counter:number = 0;
+  homeLikes:number = 1000;
+  
+
   constructor() { }
 
   ngOnInit() {

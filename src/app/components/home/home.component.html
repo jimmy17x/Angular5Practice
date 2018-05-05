@@ -25,3 +25,13 @@
 
 <input [value] = "counter" />
 <input bind-value = "counter * 10"   />
+
+<p> Two way binding [()]</p>
+<input name = 'c' [(ngModel)] = "counter" type = "number" />
+
+<p>Home likes {{homeLikes}}</p>
+
+<app-like [likes]="homeLikes"
+          (likesChange)="homeLikes = $event"
+>
+</app-like>

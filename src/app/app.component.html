@@ -21,8 +21,10 @@
     <!-- app-root is parent component-->
     <div>
         <!-- parent to child communication-->
-        <app-footer [company] = "title"
+        <!-- () event  binding -->
+        <app-footer [x-company] = "title"
                     [date] = "today"
+                    (contactEvent)="onContact($event)"
         >
 
         </app-footer>

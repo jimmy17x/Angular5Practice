@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { SharedModule } from './shared/shared.module';
+import {FormsModule} from '@angular/forms'
 
 
 @NgModule(
@@ -18,7 +19,9 @@ import { SharedModule } from './shared/shared.module';
         imports:[
                 // other module dependency
                 BrowserModule,// CommonModule , Compile referenced here
-                SharedModule
+                FormsModule,
+                SharedModule,
+                
         ],
 
         declarations : [

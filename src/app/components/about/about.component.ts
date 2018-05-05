@@ -11,6 +11,9 @@ export class AboutComponent implements OnInit {
   show:boolean = true;
   
   isMouseOver:boolean=false;
+  aboutLikes:number = 100;
+
+  
 
   constructor() { }
 
