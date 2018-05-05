@@ -35,3 +35,16 @@
           (likesChange)="homeLikes = $event"
 >
 </app-like>
+<p>Pipeline examples</p>
+<p>Title {{title | uppercase }}</p>
+<p>Title {{title | lowercase }}</p>
+<p>Title {{price | currency }}</p>
+<p>Title - pipeline {{price | currency:'INR' }}</p> 
+
+<p>Date {{today | date}} </p>
+<p>Date {{today | date:'fullDate' | uppercase }} </p>
+<p>Date {{today | date:'yyyy/MMM/dd' }} </p>
+
+
+<p> Powe 2  ==> {{2 | power}} </p>
+<p> Powe counter ^2 ==> {{counter | power:2}} </p>

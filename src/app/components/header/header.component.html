@@ -1,8 +1,19 @@
 <div>
 
-  <span>
-    Amount {{amount}}
-  </span>
-
-  <hr />
-</div>
+    <a routerLink="/"
+       class = "button " 
+       routerLinkActive="error"
+       [routerLinkActiveOptions]="{exact:true}"
+       >
+       
+       Home </a>
+  
+    <a routerLink="/products" class = "button" routerLinkActive="error">   Products </a>
+    
+    <a routerLink="/cart" class = "button" routerLinkActive="error"> Cart </a>
+    <a routerLink="/about" class = "button" routerLinkActive="error"> About </a>
+    <a routerLink="/contact" class = "button" routerLinkActive="error"> Contact </a>
+  
+    <span>Amount {{amount$ | async | currency:'INR'}}</span>
+    <hr />
+  </div>

@@ -12,8 +12,41 @@ import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { SharedModule } from './shared/shared.module';
 import {FormsModule} from '@angular/forms';
-import { CartComponent } from './components/cart/cart.component'
+import { CartComponent } from './components/cart/cart.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
+
+
+// step 1  - configurations - url to component mapping
+import{Routes,RouterModule} from '@angular/router'
+const routes :Routes =[
+    {
+        path:'',
+        component:HomeComponent
+    },
+    
+    {
+        path:'cart',
+        component:CartComponent
+    },
+    
+    {
+        path:'about',
+        component:AboutComponent
+    },
+    {
+        path:'contact',
+        component:ContactComponent
+    },
+    {
+        path:'**',
+        component:NotFoundComponent
+    },
+
+]
+
+// place holder
+// providing links in frotnend
 
 @NgModule(
     {
@@ -21,7 +54,13 @@ import { CartComponent } from './components/cart/cart.component'
                 // other module dependency
                 BrowserModule,// CommonModule , Compile referenced here
                 FormsModule,
+
+            // apply  routes to angular
+            RouterModule.forRoot(routes),
+
                 SharedModule,
+
+
                 
         ],
 
@@ -32,7 +71,8 @@ import { CartComponent } from './components/cart/cart.component'
             HomeComponent,
             ContactComponent,
             AboutComponent,
-            CartComponent
+            CartComponent,
+            NotFoundComponent
         ],
         bootstrap:[
             AppComponent

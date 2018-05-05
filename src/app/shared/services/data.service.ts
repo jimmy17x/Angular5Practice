@@ -1,15 +1,19 @@
 import { CartItem } from './../models/cart-item';
-import { Injectable } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import {Subject} from 'rxjs/Subject'
+
+import  {BehaviorSubject} from 'rxjs/BehaviorSubject'
 /*
   Business logic
   Data sharing with components
+  web service communication
 */
 @Injectable()
 export class DataService {
 
   // asytnchronous deleayed subject 
-  amount$:Subject<number> ;
+  //amount$:Subject<number> ;
+  amount$: BehaviorSubject<number>;
   total$:Subject<number> ;
 
   amount: number = 0;
@@ -18,7 +22,8 @@ export class DataService {
 
   constructor() { 
     console.log("Data service constructor called")
-    this.amount$ = new Subject()
+    //this.amount$ = new Subject()
+    this.amount$ = new BehaviorSubject(this.amount)
     this.total$ = new Subject()
   }
 
@@ -39,7 +44,7 @@ export class DataService {
     this.total=0
 
         //publish the amount
-        this.amount$.next(this.amount)
+       this.amount$.next(this.amount)
         this.total$.next(this.total)
   }
 

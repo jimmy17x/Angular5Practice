@@ -1,5 +1,6 @@
-import { DataService } from './../../shared/services/data.service';
 import { Component, OnInit } from '@angular/core';
+import{DataService} from './../../shared/services/data.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-header',
@@ -8,22 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  amount: number;
+  //amount : number;
 
+  amount$:Observable<number>;
 
-  constructor(private dataService: DataService) {
-      console.log("Header created");
+  constructor(private dataService :DataService) {
+    console.log("Header created")
+  this.amount$ = dataService.amount$;
 
-      this.amount = dataService.amount;
+    //this.amount = dataService.amount; //any error in constructor can crash the application , but do something in ngInit
    }
 
   ngOnInit() {
-      this.dataService
-          .amount$
-          .subscribe(n => {
-            console.log("Amount subscribed : " + n);
-            this.amount = n ;
-          })
+    // this.dataService
+    //   .amount$
+    //   .subscribe(n =>{
+    //       console.log("Amount Subscribed :", n);
+    //       this.amount=n;
+    //   })
 
   }
 

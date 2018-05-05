@@ -5,8 +5,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PowerPipe implements PipeTransform {
 
-  transform(value: any, args?: any): any {
-    return null;
+  constructor(){
+    console.log("Powerpipe created");
+  }
+
+  transform(value: any, exponent:number=1): number {
+    console.log("power pi ",value , exponent)
+    return Math.pow(value,exponent);
   }
 
 }

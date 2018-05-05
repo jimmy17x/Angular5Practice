@@ -32,6 +32,12 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
 
+     // RXJS Subscribe
+     this.contactEvent
+     .subscribe ( n  => {
+       console.log("Contact ", n);
+     })
+
     this.dataService.total$.subscribe(n => {
       console.log("Total subscribed from cart " + n)
       this.total = n;
