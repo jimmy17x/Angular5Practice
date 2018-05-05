@@ -1,0 +1,8 @@
+<h2>
+  Prodcut list
+</h2>
+
+<div *ngFor = "let product of (products$ | async)">
+ <p>{{product.name}}</p> 
+
+</div>

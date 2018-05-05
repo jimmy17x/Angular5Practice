@@ -15,10 +15,13 @@ import {FormsModule} from '@angular/forms';
 import { CartComponent } from './components/cart/cart.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
+import {HttpClientModule} from '@angular/common/http'
+
 
 
 // step 1  - configurations - url to component mapping
 import{Routes,RouterModule} from '@angular/router'
+import { ProductModule } from './product/product.module';
 const routes :Routes =[
     {
         path:'',
@@ -57,8 +60,11 @@ const routes :Routes =[
 
             // apply  routes to angular
             RouterModule.forRoot(routes),
+            HttpClientModule,
 
                 SharedModule,
+                // to do lazy loading
+                ProductModule
 
 
                 
