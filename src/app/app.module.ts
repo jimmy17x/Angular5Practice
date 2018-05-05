@@ -11,7 +11,8 @@ import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { SharedModule } from './shared/shared.module';
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
+import { CartComponent } from './components/cart/cart.component'
 
 
 @NgModule(
@@ -30,7 +31,8 @@ import {FormsModule} from '@angular/forms'
             FooterComponent,
             HomeComponent,
             ContactComponent,
-            AboutComponent
+            AboutComponent,
+            CartComponent
         ],
         bootstrap:[
             AppComponent

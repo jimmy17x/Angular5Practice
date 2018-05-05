@@ -1,3 +1,4 @@
+import { DataService } from './../../shared/services/data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  amount: number;
+
+
+  constructor(private dataService: DataService) {
+      console.log("Header created");
+
+      this.amount = dataService.amount;
+   }
 
   ngOnInit() {
+      this.dataService
+          .amount$
+          .subscribe(n => {
+            console.log("Amount subscribed : " + n);
+            this.amount = n ;
+          })
+
   }
 
 }

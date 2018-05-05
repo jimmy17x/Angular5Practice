@@ -1,3 +1,4 @@
+import { DataService } from './../../shared/services/data.service';
 import { Component, OnInit ,
                      Input,
                     Output,
@@ -17,15 +18,24 @@ export class FooterComponent implements OnInit {
   @Input()
   date:Date;
 
+  total:number ; // cart total amount
+
   // event binding (contactEvent)
   // output/event binding
   @Output()
   contactEvent:EventEmitter<number> = new EventEmitter()
 
 
-  constructor() { }
+  constructor(private dataService : DataService) {
+      this.total = dataService.total
+   }
 
   ngOnInit() {
+
+    this.dataService.total$.subscribe(n => {
+      console.log("Total subscribed from cart " + n)
+      this.total = n;
+    })
   }
 
   contact()
