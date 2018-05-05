@@ -21,7 +21,7 @@ import {HttpClientModule} from '@angular/common/http'
 
 // step 1  - configurations - url to component mapping
 import{Routes,RouterModule} from '@angular/router'
-import { ProductModule } from './product/product.module';
+//import { ProductModule } from './product/product.module';
 const routes :Routes =[
     {
         path:'',
@@ -31,6 +31,10 @@ const routes :Routes =[
     {
         path:'cart',
         component:CartComponent
+    },
+    {
+        path: 'products',
+        loadChildren: 'app/product/product.module#ProductModule'
     },
     
     {
@@ -64,7 +68,7 @@ const routes :Routes =[
 
                 SharedModule,
                 // to do lazy loading
-                ProductModule
+                //ProductModule
 
 
                 

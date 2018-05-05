@@ -12,7 +12,8 @@ import { SharedModule } from '../shared/shared.module';
 
 const routes:Routes= [
   {
-    path:'products',
+    //path:'products',
+    path:'',
     component:ProductHomeComponent,
     //nested navigation
     children:[
