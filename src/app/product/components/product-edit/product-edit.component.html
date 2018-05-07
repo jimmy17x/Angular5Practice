@@ -1,3 +1,15 @@
-<p>
-  product-edit works!
-</p>
+<h2>
+  Product edit - {{product.name}}
+</h2>
+
+<form>
+  <label for ="name">
+    Name
+  </label>
+  <input name = "name"
+          [(ngModel)]="product.name"        
+  />
+
+</form>
+  
+  <button (click)="gotoList()">List Page</button> 

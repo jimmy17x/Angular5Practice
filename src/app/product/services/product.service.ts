@@ -1,17 +1,29 @@
+import { environment } 
+        from './../../../environments/environment';
+
+import { Product } from './../models/product';
 import { Observable } from 'rxjs/Observable';
-import {  HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from '../models/product';
+import { HttpClient } from '@angular/common/http';
+
+
+console.log("ENV ", environment)
 
 @Injectable()
 export class ProductService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getProducts():Observable<Product[]>{
-    return this.http.get<Product[]>('http://localhost:7070/delayed/api/products')
+  // GET /api/products
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.apiEndPoint}/api/products`);
   }
 
+  // GET /api/products/100
+  getProduct(id: any): Observable<Product> {
+    return this.http
+          .get<Product>(`${environment.apiEndPoint}/api/products/${id}`);
+  }
 
 
 }
