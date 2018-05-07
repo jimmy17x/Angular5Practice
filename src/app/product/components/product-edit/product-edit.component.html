@@ -1,15 +1,51 @@
-<h2>
-  Product edit - {{product.name}}
-</h2>
+<h2>Product Edit - {{product.name}} </h2>
 
-<form>
-  <label for ="name">
+<form (ngSubmit) = "saveProduct()" >
+  <label for="name">
     Name
   </label>
-  <input name = "name"
-          [(ngModel)]="product.name"        
-  />
+  <input name="name"
+         [(ngModel)]="product.name" />
+
+  <label for="price">
+   Price
+  </label>
+  <input name="price"
+         type="number"
+        [(ngModel)]="product.price" />
+
+
+  <label for="year">
+    Year
+  </label>
+  <input name="year"
+         type="number"
+        [(ngModel)]="product.year" />
+
+
+  <label for="weight">
+    Weight
+  </label>
+  <input name="weight"
+        [(ngModel)]="product.weight" />
+
+        <label for = "brandId">
+          Brand
+        </label>
+        <select name = "brandId"
+                [(ngModel)] ="product.barndId"
+                >
+          <option [value] = "brand.id" 
+                *ngFor="let brand of (brands$ | async )" >{{brand.name}}</option>
+        </select>
+
+        <button type = "submit">
+            Save
+        </button>
+      
 
 </form>
-  
-  <button (click)="gotoList()">List Page</button> 
+
+<button (click)="gotoList()">
+  List Page
+</button>

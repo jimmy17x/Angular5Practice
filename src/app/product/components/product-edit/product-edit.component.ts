@@ -1,7 +1,9 @@
+import { Brand } from './../../models/brand';
 import { ProductService } from './../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../models/product';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-product-edit',
@@ -11,6 +13,8 @@ import { Product } from '../../models/product';
 export class ProductEditComponent implements OnInit {
   
   product: Product  = new Product();
+
+  brands$:Observable<Brand[]>
 
 
   constructor(private route: ActivatedRoute, 
@@ -32,7 +36,25 @@ export class ProductEditComponent implements OnInit {
           });
     }
 
+    this.brands$ = this.productService.getBrands();
+
   }
+
+  saveProduct()
+  {
+    this.productService
+    .saveProduct(this.product)
+    .subscribe(saveProduct => {
+      console.log("product saved" , saveProduct);
+
+      // option  1 go to list page
+     // this.gotoList();
+      // option : contnue woowrkin no the same form , then use put method
+      this.product = saveProduct
+    })
+  }
+
+
 
   gotoList() {
     this.router.navigateByUrl('/products/list');

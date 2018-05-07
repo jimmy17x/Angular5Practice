@@ -1,5 +1,6 @@
-import { environment } 
-        from './../../../environments/environment';
+import { Brand } from './../models/brand';
+import { environment }
+  from './../../../environments/environment';
 
 import { Product } from './../models/product';
 import { Observable } from 'rxjs/Observable';
@@ -22,8 +23,24 @@ export class ProductService {
   // GET /api/products/100
   getProduct(id: any): Observable<Product> {
     return this.http
-          .get<Product>(`${environment.apiEndPoint}/api/products/${id}`);
+      .get<Product>(`${environment.apiEndPoint}/api/products/${id}`);
   }
 
+  getBrands(): Observable<Brand[]> {
+    return this.http.get<Brand[]>(`${environment.apiEndPoint}/api/brands`);
+
+  }
+
+  saveProduct(product:  Product): Observable<Product> {
+    if  (product.id) { // update
+      return  this.http
+        .put<Product>(`${environment.apiEndPoint}/api/products/${product.id}`,
+          product);
+    }  else  { //create
+      return  this.http
+        .post<Product>(`${environment.apiEndPoint}/api/products`,
+          product);
+    }
+  }
 
 }

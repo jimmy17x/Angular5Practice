@@ -1,6 +1,20 @@
-<h2>
+<!-- h2 element is hosting directive aka host element-->
+<!-- <h2 appHighlight color= "lightgreen">
   About
-</h2>
+</h2> -->
+
+<h2 appHighLight = "lightgreen" #highLight1='appHighLight'>
+    About
+  </h2>
+
+  <p>
+    color is {{highLight1.color}} <!-- we can also get instanc of directive using  # and also the dom element  check line 17 and 6-->
+  </p>
+
+  <button (click) = "highLight1.setColor('purple')">
+    change color
+  </button>
+
 <!-- # template reference -->
 
 <input #memberName />
@@ -24,11 +38,13 @@
 </button>
 
 <!-- ng 4.0 , else-->
-
+<!-- div is host element-->
 <div [ngClass]="{highlight:isMouseOver}" 
       *ngIf = "show else notShown" 
       (mouseenter)="isMouseOver=true"
       (mouseleave)="isMouseOver=false"
+
+      appHighLight = "lightblue"
       >
   <ul>
     <li *ngFor="let member of memebers">
