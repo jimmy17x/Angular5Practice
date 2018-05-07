@@ -41,7 +41,7 @@ export class DataService {
   emptyCart() {
     this.items=[];
     this.amount=0;
-    this.total=0
+    this.total=0  
 
         //publish the amount
        this.amount$.next(this.amount)

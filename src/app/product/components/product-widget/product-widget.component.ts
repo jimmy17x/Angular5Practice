@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { DataService } from './../../../shared/services/data.service';
+import { CartItem } from './../../../shared/models/cart-item';
+import { Product } from './../../models/product';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product-widget',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductWidgetComponent implements OnInit {
 
-  constructor() { }
+
+  @Input()
+  product:Product
+  
+  constructor(private dataService : DataService) { }
 
   ngOnInit() {
   }
+
+  addToCart(product: Product) {
+    let item = new CartItem(product.id, 
+                            product.name, 
+                            product.price, 
+                            1);
+
+    this.dataService.addItem(item)
+  }
+
 
 }

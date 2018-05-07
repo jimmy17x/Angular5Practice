@@ -52,7 +52,7 @@ const routes:Routes= [
     FormsModule,
     ReactiveFormsModule,
 
-    SharedModule
+   // SharedModule
   ],
   declarations: [ProductHomeComponent, 
                   ProductListComponent, 

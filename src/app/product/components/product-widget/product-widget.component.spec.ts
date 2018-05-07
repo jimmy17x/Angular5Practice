@@ -1,6 +1,9 @@
+import { CartItem } from './../../../shared/models/cart-item';
+import { Product } from './../../models/product';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductWidgetComponent } from './product-widget.component';
+
 
 describe('ProductWidgetComponent', () => {
   let component: ProductWidgetComponent;
@@ -23,3 +26,5 @@ describe('ProductWidgetComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+
