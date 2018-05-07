@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 // module is a logical collection of
 // components , directives , pipes (filters) 
 // services (providers)
@@ -16,7 +17,6 @@ import { CartComponent } from './components/cart/cart.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 import {HttpClientModule} from '@angular/common/http'
-
 
 
 // step 1  - configurations - url to component mapping
@@ -62,6 +62,8 @@ const routes :Routes =[
                 BrowserModule,// CommonModule , Compile referenced here
                 FormsModule,
 
+                AuthModule,
+
             // apply  routes to angular
             RouterModule.forRoot(routes),
             HttpClientModule,
@@ -83,6 +85,7 @@ const routes :Routes =[
             AboutComponent,
             CartComponent,
             NotFoundComponent
+           
         ],
         bootstrap:[
             AppComponent

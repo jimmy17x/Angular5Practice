@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { HighlightDirective } from './../../shared/directives/highlight.directive';
+import { Component, 
+        OnInit , 
+        ViewChild,
+        ElementRef 
+      } from '@angular/core';
 
 @Component({
   selector: 'app-about',
@@ -13,11 +18,23 @@ export class AboutComponent implements OnInit {
   isMouseOver:boolean=false;
   aboutLikes:number = 100;
 
-  
+  @ViewChild("memberName")
+  inputElement:ElementRef
+
+  @ViewChild("#p1")
+  p1Element:ElementRef
+
+  // access directive instance
+  @ViewChild("highLight1")
+    highLight:HighlightDirective;
 
   constructor() { }
 
   ngOnInit() {
+    this.p1Element.nativeElement.textContent = "from TS"
+    this.inputElement.nativeElement.focus()
+    console.log("Dir " , this.highLight.color)
+    this.highLight.setColor("blue")
   }
 
   empty()

@@ -26,8 +26,30 @@ export class ProductService {
       .get<Product>(`${environment.apiEndPoint}/api/products/${id}`);
   }
 
+  storage:Storage = window.localStorage
   getBrands(): Observable<Brand[]> {
-    return this.http.get<Brand[]>(`${environment.apiEndPoint}/api/brands`);
+    //todo: check if chache present , serve from cache else servve efrom cahche 
+    let brandsJson = this.storage.getItem("brands")
+    if(brandsJson)
+    {
+      console.log("serving from brands cache")
+      let brands:Brand[] = <Brand[]>JSON.parse(brandsJson)
+      return Observable.of(brands)
+    }
+
+
+
+    console.log("servicng from server")
+    return this.http.
+                get<Brand[]>(`${environment.apiEndPoint}/api/brands`)
+                .map(brands=>{
+                  // todo chache
+                  console.log("caching brands")
+                  this.storage.setItem("brands",JSON.stringify(brands))
+                  return brands
+                })
+
+
 
   }
 

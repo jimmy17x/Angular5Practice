@@ -14,6 +14,9 @@
     <a routerLink="/about" class = "button" routerLinkActive="error"> About </a>
     <a routerLink="/contact" class = "button" routerLinkActive="error"> Contact </a>
   
+    <app-auth-menu>
+
+    </app-auth-menu>
     <span>Amount {{amount$ | async | currency:'INR'}}</span>
     <hr />
   </div>

@@ -1,9 +1,11 @@
+import { inject } from '@angular/core/testing';
 import { Brand } from './../../models/brand';
 import { ProductService } from './../../services/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../../models/product';
 import { Observable } from 'rxjs/Observable';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-product-edit',
@@ -15,6 +17,9 @@ export class ProductEditComponent implements OnInit {
   product: Product  = new Product();
 
   brands$:Observable<Brand[]>
+
+  @ViewChild("productForm")
+  form :NgForm
 
 
   constructor(private route: ActivatedRoute, 
@@ -42,6 +47,19 @@ export class ProductEditComponent implements OnInit {
 
   saveProduct()
   {
+
+    if(this.form.invalid)
+    {
+      alert('INvalid form ,cannot save')
+      return
+    }
+
+    if(this.form.pristine)
+    {
+      alert('no changes found')
+      return
+    }
+
     this.productService
     .saveProduct(this.product)
     .subscribe(saveProduct => {
@@ -51,6 +69,7 @@ export class ProductEditComponent implements OnInit {
      // this.gotoList();
       // option : contnue woowrkin no the same form , then use put method
       this.product = saveProduct
+      this.form.reset(saveProduct)
     })
   }
 

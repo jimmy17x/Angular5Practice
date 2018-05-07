@@ -1,3 +1,5 @@
+import { SaveAlertGuard } from './guards/save-alert.guard';
+import { CanEditGuard } from './guards/can-edit.guard';
 import { ProductService } from './services/product.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,7 +8,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductSearchComponent } from './components/product-search/product-search.component';
 import { ProductWidgetComponent } from './components/product-widget/product-widget.component';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate, CanDeactivate } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 
@@ -28,16 +30,20 @@ const routes:Routes= [
       },
       {
         path:'create',
-        component:ProductEditComponent
+        component:ProductEditComponent,
+        canDeactivate:[SaveAlertGuard]
       },
       {
         path:'edit/:id', // products/edit/12345
-        component:ProductEditComponent
+        component:ProductEditComponent,
+        canActivate:[CanEditGuard],
+        canDeactivate:[SaveAlertGuard]
       }
       ,
       {
         path:'search', // products/edit/12345
-        component:ProductSearchComponent
+        component:ProductSearchComponent,
+        canActivate:[CanEditGuard]
       }
       
     ]
@@ -61,7 +67,11 @@ const routes:Routes= [
                   ProductWidgetComponent
                 ],
                 providers:[
-                  ProductService
+                  ProductService,
+                  CanEditGuard,
+                  SaveAlertGuard
                 ]
+
+                
 })
 export class ProductModule { }
